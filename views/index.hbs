@@ -1,0 +1,25 @@
+<h2> ToDos page </h2>
+
+{{#if todos.length}}
+    <ul>
+        {{#each todos}}
+            <form action="/complete" method="post">
+                <li class="todo">
+                    <label>
+                        {{#if completed}}
+                            <input type="checkbox" name="completed" checked>
+                            <span class="completed">{{ title }}</span>
+                        {{else}}
+                            <input type="checkbox" name="completed">
+                            <span>{{ title }}</span>
+                        {{/if}}
+                        <button class="btn btn-small" type="submit">Save</button>
+                        <input type="hidden" value='{{ _id }}' name="id">
+                    </label>
+                </li>
+            </form>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>No todos!</p>
+{{/if}}
